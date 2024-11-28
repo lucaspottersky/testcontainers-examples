@@ -37,10 +37,7 @@
    </properties>
 
    <modules>
-      <module>hibernate</module>
-      <module>wildfly-mariadb</module>
       <module>wildfly-mariadb-plain-containers</module>
-      <module>jsf</module>
    </modules>
 
    <!-- Logging -->
