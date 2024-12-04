@@ -25,11 +25,11 @@ import org.junit.jupiter.api.extension.ExtendWith;
 
 import com.github.kaiwinter.testcontainers.wildfly.core.UserService;
 import com.github.kaiwinter.testcontainers.wildfly.db.entity.User;
-import com.github.kaiwinter.testsupport.arquillian.WildflyMariaDBDockerExtension;
+import com.github.kaiwinter.testsupport.arquillian.WildflyPostgresDBDockerExtension;
 import com.github.kaiwinter.testsupport.db.DockerDatabaseTestUtil;
 
 /**
- * Tests for {@link UserRepository}. The class {@link WildflyMariaDBDockerExtension} registers an arqullian observer
+ * Tests for {@link UserRepository}. The class {@link WildflyPostgresDBDockerExtension} registers an arqullian observer
  * which is called on initialization time. The observer starts a Docker container with Wildfly 10/MariaDB and inserts
  * some test data. Arquillian then deploys to that server and runs this tests.
  */

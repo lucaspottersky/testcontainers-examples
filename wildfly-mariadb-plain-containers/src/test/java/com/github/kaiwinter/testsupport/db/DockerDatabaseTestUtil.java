@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.MalformedURLException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.sql.Connection;
@@ -17,9 +18,12 @@ import jakarta.persistence.EntityManager;
 import org.dbunit.DatabaseUnitException;
 import org.dbunit.database.DatabaseConfig;
 import org.dbunit.database.DatabaseConnection;
+import org.dbunit.dataset.IDataSet;
 import org.dbunit.dataset.xml.FlatXmlDataSet;
+import org.dbunit.dataset.xml.FlatXmlDataSetBuilder;
 import org.dbunit.dataset.xml.FlatXmlProducer;
 import org.dbunit.ext.mysql.MySqlDataTypeFactory;
+import org.dbunit.ext.postgresql.PostgresqlDataTypeFactory;
 import org.dbunit.operation.DatabaseOperation;
 import org.hibernate.Session;
 import org.hibernate.jdbc.Work;
@@ -117,7 +121,8 @@ public abstract class DockerDatabaseTestUtil {
                LOGGER.debug("INSERTing testdata");
                DatabaseConnection databaseConnection = new DatabaseConnection(connection);
                databaseConnection.getConfig().setProperty(DatabaseConfig.PROPERTY_DATATYPE_FACTORY,
-                  new MySqlDataTypeFactory());
+                  new PostgresqlDataTypeFactory());
+
 
                FlatXmlDataSet dataSet = new FlatXmlDataSet(
                   new FlatXmlProducer(new InputSource(dbUnitTestdata), false, true));
